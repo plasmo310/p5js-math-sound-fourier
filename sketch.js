@@ -30,7 +30,7 @@ function playSound(func) {
   let audioCtx = new AudioContext();
   audioCtx.sampleRate = SampleRate;
 
-  // create buffer.
+  // create mono channel buffer.
   let buffer = audioCtx.createBuffer(1, PlaySec * SampleRate, SampleRate);
   let channelData = buffer.getChannelData(0);
   for (var i = 0; i < buffer.length; i++) {
@@ -75,6 +75,7 @@ function pushSinPlayButton() {
   playSound((t) => wave_sinusoid_func(t, 441));
 }
 
+// 初期処理
 function setup() {
   createCanvas(ScreenWidth, ScreenHeight);
   playNoiseButton = createButton("Play Noise");
@@ -85,6 +86,7 @@ function setup() {
   playSinButton.position(ScreenWidth - (playSinButton.width), 48);
 }
 
+// 更新処理
 function draw() {
   background(255);
   drawGrid();
