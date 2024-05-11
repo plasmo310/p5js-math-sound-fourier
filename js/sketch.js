@@ -33,7 +33,7 @@ function waveCos2npiFunc(t, freq) {
  * @param {number[]} bArray sin関数の定数項
  * @param {number[]} baseFreq 計算のベースとする周波数
  */
-function waveFoorierSeriesFunc(t, a0, aArray, bArray, baseFreq = 441) {
+function waveFourierSeriesFunc(t, a0, aArray, bArray, baseFreq = 441) {
   // cos値の計算
   let cosValues = [];
   for (let n = 0; n < aArray.length; n++) {
@@ -130,14 +130,14 @@ function pushRectPlayButton() {
     let b = n % 2 != 0 ? (4 / (n * Math.PI)) : 0;
     bArray.push(b);
   }
-  playSoundAndCheckFourier((t) => waveFoorierSeriesFunc(t, 0, [], bArray));
+  playSoundAndCheckFourier((t) => waveFourierSeriesFunc(t, 0, [], bArray));
 }
 
 /**
  * フーリエ波形再生ボタン押下
  */
 function pushFoorierPlayButton() {
-  playSoundAndCheckFourier((t) => waveFoorierSeriesFunc(t, 0, [1, 2, 3], [1]));
+  playSoundAndCheckFourier((t) => waveFourierSeriesFunc(t, 0, [1, 2, 3], [1]));
 }
 
 /**
