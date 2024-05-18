@@ -51,7 +51,7 @@ function waveFourierSeriesFunc(t, a0, aArray, bArray, baseFreq = 441) {
   // フーリエ級数の形で計算して返却
   const cosSum = cosValues.length == 0 ? 0 : cosValues.reduce((sum, x) => sum + x, 0);
   const sinSum = sinValues.length == 0 ? 0 : sinValues.reduce((sum, x) => sum + x, 0);
-  return a0 * (1 / Math.sqrt(2)) + cosSum + sinSum;
+  return a0 / 2 + cosSum + sinSum;
 }
 
 /**
@@ -75,7 +75,7 @@ function fourierCoefficients(f, N, baseFreq = 441, dotN = 100) {
   }
 
   // sin、cos関数との内積結果から係数を求める
-  let a0 = dot_function(f, (t) => 1 / Math.sqrt(2), dotN);
+  let a0 = dot_function(f, (t) => 1 / 2, dotN);
   let anArray = [];
   let bnArray = [];
   for (let n = 0; n < N; n++) {
